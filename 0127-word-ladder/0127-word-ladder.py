@@ -4,7 +4,7 @@ class Solution:
         queue=deque([beginWord])# we have to put in list otherwise popping gives us each letter and not the whole word
         changes=1
         visited=set([beginWord])
-        wordList = set(wordList)
+        wordList = set(wordList)#this is added if there are many duplicates in wordList which will cause runtime to go more than leetcode allows
         
         if endWord not in wordList:#base case
             return 0
