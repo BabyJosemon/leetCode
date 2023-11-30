@@ -1,33 +1,39 @@
-from collections import deque
-class MyQueue:
-    
-    
+class MyQueue {
 
-    def __init__(self):
-        self.inputStack=deque()
-        self.outputStack=deque()
-
-    def push(self, x: int) -> None:
-        self.inputStack.append(x)
-
-    def pop(self) -> int:
-        self.peek()
-        return self.outputStack.pop()
-
-    def peek(self) -> int:
-        if(len(self.outputStack)==0):
-            while(len(self.inputStack)>0):
-                self.outputStack.append(self.inputStack.pop())
-        return self.outputStack[-1]
+        Stack<Integer> inputStack = new Stack<Integer>();
+        Stack<Integer> outputStack = new Stack<Integer>();
+    //Our 2 stacks
         
+    
+    
+    public void push(int x) {
+        inputStack.push(x);//simply push into one stack
+    }
+    
+    public int pop() {
+        peek();//to remove elements we will use another stack where we will move our items from inputStack. Removal from inputStack is LIFO and adding it into outputStack means that the order gets reversed and not first element will be in top to pop
+        return(outputStack.pop());//pop that first element after transferring to output stack
+    }
+    
+    public int peek() {
+       if(outputStack.empty()){//always populate this
+           while(!inputStack.empty()){//move all
+               outputStack.push(inputStack.pop());//this is where 2xstack LIFO = FIFO
+           }
+       }
+        return(outputStack.peek());
+    }
+    
+    public boolean empty() {
+       return(inputStack.empty() && outputStack.empty()) ;
+    }
+}
 
-    def empty(self) -> bool:
-        return (len(self.inputStack)==0 and len(self.outputStack)==0)
-
-
-# Your MyQueue object will be instantiated and called as such:
-# obj = MyQueue()
-# obj.push(x)
-# param_2 = obj.pop()
-# param_3 = obj.peek()
-# param_4 = obj.empty()
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
