@@ -6,17 +6,25 @@
 #similarly we find right array and here we start from the end of the array. the last element will be 1, right[n-1]=1 as no element to the right of last element.so right=[_,_,_,1].
 #for array[2] we use the same principle as before array[j]=array[j+1]xright[j+1]; so array[2]=array[3]xright[3] = 4, right=[_,_,4,1]
 # this is because again array[j]=array[j+1]xarray[j+2]x... equation 2 and here array[j+2]x... can be substituted with the already calculated values.
+# this can be further optimised to only use the result array by calculating left array in result array first. Then create a varible to store rightmost element. Then run the right array loop and result[i]=result[i]x right variable. This is because result[i] is already the product of all numbers to the left of result[i] and multiply that with the right variable which at first is the last element but everytime we set it to right=rightxarray[j] as each time running the loop back it will keep on multiplying to each value.
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        left=[1]*len(nums)# this is the array to store all products to the left of a number starting with 1
-        right=[None]*len(nums)#this is the array to store all products to the right of a number ending with 1
-        right[len(nums)-1]=1
-        result=[None]*len(nums)
+        #left=[1]*len(nums)# this is the array to store all products to the left of a number starting with 1
+        #right=[None]*len(nums)#this is the array to store all products to the right of a number ending with 1
+        #right[len(nums)-1]=1
+        #result=[None]*len(nums)
+        #for i in range(1,len(nums)):
+            #left[i]=nums[i-1]* left[i-1]#similar to prefix sum
+        #for j in range(len(nums)-2,-1,-1):
+            #right[j]=nums[j+1]*right[j+1]#similar to suffix sum
+        #for k in range(len(nums)):
+            #result[k]=left[k]*right[k]
+        result=[1]* len(nums)
         for i in range(1,len(nums)):
-            left[i]=nums[i-1]* left[i-1]#similar to prefix sum
+            result[i]=nums[i-1]*result[i-1]
+        right=nums[-1]
         for j in range(len(nums)-2,-1,-1):
-            right[j]=nums[j+1]*right[j+1]#similar to suffix sum
-        for k in range(len(nums)):
-            result[k]=left[k]*right[k]
+            result[j]=result[j]*right
+            right=right*nums[j]
         return result
         
