@@ -1,0 +1,4 @@
+Here we first convert our integer array to a hashset O(n) so that everytime we access an element (.contain(number)) we do it in O(1) time. This is bcs hashsets store data in key value pairs like hashtables (dictionaries) except here the key is calculated by calculating the hash of the number being added.
+​
+Then we loop through each element in list O(n) and check if element-1 exists in set, if it does we ignore it as we can start counting from the start of consecutive set. eg. if 2 is element, if 2-1=1 already is present in set we can start counting from there.
+If element-1 is not in set, that means the current element has the potential to be the start of a consecutive sequence . Set next element as current+1, and while this next element exists in set keep incrementing nextElement by 1. So current=1, nextElement=2->3->4->5 where 5 is not in set. Then nextElement-current is the number of consecutive elements found just now, 5-1=4.
