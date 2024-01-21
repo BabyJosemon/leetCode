@@ -1,5 +1,5 @@
-Here we will use a form of two pointer approach, where
-Approach for this Problem:
+Here we will use a form of two pointer approach combined with binary search, where
+Approach to this Problem:
 Sort the input array
 Initialize a set to store the unique triplets and an output vector to store the final result
 Iterate through the array with a variable i, starting from index 0.
