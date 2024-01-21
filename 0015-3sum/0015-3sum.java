@@ -4,9 +4,9 @@ class Solution {
         List<List<Integer>> result= new ArrayList<>();
         Set<List<Integer>> partial = new HashSet<>();
         for(int i=0;i<nums.length;i++){
-            int firstPointer=i+1;
+            int firstPointer=i+1;//two-pointer
             int secondPointer=nums.length-1;
-            while(firstPointer<secondPointer){
+            while(firstPointer<secondPointer){//binary search
                 int sum=nums[i]+nums[firstPointer]+nums[secondPointer];
                 if (sum>0){
                     secondPointer--;
