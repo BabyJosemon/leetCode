@@ -1,0 +1,1 @@
+Just create a hashmap, add numbers as keys and index as values. If another is found, calculate distance. If anytime this distance is less than k, return true. If loop ran with no returns, final return false.
