@@ -1,0 +1,1 @@
+Here also we use 2 pointers like in 0027-Remove Element where we have pointers i and j both at index 1, iterate i. If arr[i]!=arr[i-1]: nums[j]=nums[i] and j+=1. Else dont increment j
