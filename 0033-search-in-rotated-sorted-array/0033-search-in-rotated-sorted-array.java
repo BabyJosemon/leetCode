@@ -1,5 +1,8 @@
 /*
-Again we bank on the idea that rotating a sorted array creates 2 sides, left side with larger elements which were originally at the end of the unrotated array, and right side with smaller elements that were originally at the beginning of the unrotated array. This is similar to finding minimum in sorted array, We do the same in that we will start a regular binary search eg. consider [3,4,5,6,7,8,9,0,1,2], target=7. assume mid=6, we check to see that we are in the left side (arr[mid]>=arr[left]).
+Again we bank on the idea that rotating a sorted array creates 2 sides, left side with larger elements which were originally at the end of the unrotated array, 
+and right side with smaller elements that were originally at the beginning of the unrotated array. This is similar to finding minimum in sorted array,
+ We do the same in that we will start a regular binary search eg. consider [3,4,5,6,7,8,9,0,1,2], target=7. assume mid=6, we check to see that we are in the
+ left side (arr[mid]>=arr[left]).
 If we are in left side:
    -If now the target is larger than mid eg.7 then it means that we need to search on the right as all elements to left of mid will definitely be smaller than target too. 
    -If not, the target is smaller than mid eg.0 it can be on two sides 3-5 or 7-2. We now use the property that the smallest element in left side is the leftmost element.
