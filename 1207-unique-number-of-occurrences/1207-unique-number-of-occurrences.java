@@ -1,4 +1,6 @@
-//store frequencies in hashmap, try adding all frequencies into a set. If it fails return false
+//store frequencies in hashmap, try adding all frequencies into a set. If it fails return false. 
+//You can also add all values of the Map into the set and check if their lengths are equal or not
+//Set<Integer> checker = new HashSet<>(cache.values());
 class Solution {
     public boolean uniqueOccurrences(int[] arr) {
         if(arr.length==1){
