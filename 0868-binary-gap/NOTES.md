@@ -10,3 +10,23 @@ here, set the currentSize back to 0 and set closedAtLeastOnce to true.
 -else we see a 0, only increment if flag is true.
 ​
 At the end check if closedAtLeastOnce is true (eg. "001000") if it is return maxSize+1. Else just return 0 as the gate was never closed.
+
+
+
+###########
+only 1 flag is needed, 
+Boolean flag=false;
+int counter=0, maxcount=0;
+for(int I=0;I<strs.length();I++){
+char ch= strs.charAt(I);
+if(ch=='1'){
+if(flag){
+maxCount=math.max(maxCount, counter);
+}
+counter=0;
+flag=true;
+}else{
+counter+=1;
+}
+return maxCount;
+}
