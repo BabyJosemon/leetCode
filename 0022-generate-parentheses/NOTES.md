@@ -5,7 +5,7 @@ how many open and closed paranthesis we have at each moment. The rules are:
 2) If Open is less than n we have an option of adding '('.(eg. "(()")
 3) if closed is less than open we have an option of adding ')'. (eg. "(()")
 4) if at any time open=closed=n, then return as possible solution.
-[Tree](http://imgur.com/Xj076XI)
+[Tree](http://imgur.com/qdneraA)
 ​
 Some other considerations:
 We will create a nested function as we need to keep access to n, currentString without
