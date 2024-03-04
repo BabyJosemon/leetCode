@@ -11,7 +11,7 @@ One thing to keep in mind, if k is very large or greater than length of nums eg.
 . we dont need to rotate it 101 times. This is because everytime we rotate the list
 num.length times it resets (So [1,2,3,4,5,6,7] is the output for k=7) after that we just need
 to rotate once more. So actual rotations will always be k%nums.length.
-[See Image](https://imgur.com/a/qEft4Or)
+[See Image](https://imgur.com/SGI4ijf)
 ​
 Bonus- if k is negative eg. -2 which is rotate to left the answer is [3,4,5,6,7,1,2] which is
 basically same as k=5 as 5 elements were picked up from back and put in front. So
