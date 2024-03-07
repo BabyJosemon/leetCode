@@ -19,7 +19,23 @@ class Solution {
             }
         }
         return result.stream().mapToInt(Integer::intValue).toArray();
-        
-        
+        /*
+        HashMap<Integer, Integer> cache=new HashMap<>();
+        for(Integer i:nums){
+            cache.put(i, cache.getOrDefault(i,0)+1);
+        }
+        PriorityQueue<Map.Entry<Integer, Integer>> minheap=new PriorityQueue<>((e1,e2)->e1.getValue()-e2.getValue());
+        for(Map.entry<Integer, Integer> entry: cache.entrySet()){
+            minheap.add(entry);
+            if(minheap.size()>k){
+                minheap.poll();
+            }
+        }
+        List<Integer> result=new ArrayList<>();
+        while(!minheap.isEmpty()){
+            result.add(minheap.poll().getKey());
+        }
+        return result.stream().mapToInt(Integer::intValue).toArray();
+        */
     }
 }
