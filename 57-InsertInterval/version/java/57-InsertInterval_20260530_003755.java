@@ -1,10 +1,10 @@
 // Last updated: 30/05/2026, 00:37:55
-1/* The brute force approach where you insert the new interval to the list of intervals and then sort it. And then you use the same algo as 56. Merge Intervals is possible but we can improve it. In the brute force approach we are sorting the array again unnecesarily. Merge Intervals question did not have a sorted array but here we already get a sorted array so we make use of it. We only need to pass through the array once and thenwe have 3 phases. Imagine the intervals on a number line along with the newInterval also on it but above. Then iterate through the list and for each interval:
-2Phase1 : If the interval lies before newInterval, add it directly to the result list. so interval[1]<newInterval[0]
-3Phase2 : After Phase 1 you already know: "every remaining interval could overlap — none of them ended too early". So in Phase 2 you just need to know when to stop merging. You stop when the current interval starts after your new interval ends. And till then this new Interval keeps growing by have the start being min of current and new interval starts and end being max of current and new interval ends. 
-4Phase3: Once phase 2 is done you already know: "every remaining interval starts after newExpandedInterval created in phase 2 so the rest can be added directly." 
-5
-6Remember different from 56. Merge Intervals overlap check in phase 2 we are not checking if we have an overlap. Everything after phase 1 is a potential overlap so we need to figure out when the overlap stops. That is the conditional in loop which is currentIntervalStart>newIntervalEnd.
+/* The brute force approach where you insert the new interval to the list of intervals and then sort it. And then you use the same algo as 56. Merge Intervals is possible but we can improve it. In the brute force approach we are sorting the array again unnecesarily. Merge Intervals question did not have a sorted array but here we already get a sorted array so we make use of it. We only need to pass through the array once and thenwe have 3 phases. Imagine the intervals on a number line along with the newInterval also on it but above. Then iterate through the list and for each interval:
+Phase1 : If the interval lies before newInterval, add it directly to the result list. so interval[1]<newInterval[0]
+Phase2 : After Phase 1 you already know: "every remaining interval could overlap — none of them ended too early". So in Phase 2 you just need to know when to stop merging. You stop when the current interval starts after your new interval ends. And till then this new Interval keeps growing by have the start being min of current and new interval starts and end being max of current and new interval ends. 
+Phase3: Once phase 2 is done you already know: "every remaining interval starts after newExpandedInterval created in phase 2 so the rest can be added directly." 
+
+Remember different from 56. Merge Intervals overlap check in phase 2 we are not checking if we have an overlap. Everything after phase 1 is a potential overlap so we need to figure out when the overlap stops which is where the while loop breaks. So the conditional in the while loop is what keeps it in overlap territory. What puts it outside this overlap territory is when currentIntervalStart>newIntervalEnd and the opposite to that which goes into the condition is currentIntervalStart<=newIntervalEnd.
 Brute force solution was O(nlogn) but this is O(n) because no sorting required.*/
 7class Solution {
 8    public int[][] insert(int[][] intervals, int[] newInterval) {
@@ -27,7 +27,7 @@ Brute force solution was O(nlogn) but this is O(n) because no sorting required.*
 25        }
 26        //after we have expanded newInterval to max possible merged interval we add it to the result
 27        mergedInterval.add(newInterval);
-28        //at this point i is at [6,9]
+28        //at this point i is at [6,9] and the remaining can be added directly as there is no more overlap
 29        while(i<sizeOfIntervals){
 30            mergedInterval.add(intervals[i]);
 31            i++;
