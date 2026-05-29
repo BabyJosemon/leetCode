@@ -4,7 +4,8 @@
 3Phase2 : After Phase 1 you already know: "every remaining interval could overlap — none of them ended too early". So in Phase 2 you just need to know when to stop merging. You stop when the current interval starts after your new interval ends. And till then this new Interval keeps growing by have the start being min of current and new interval starts and end being max of current and new interval ends. 
 4Phase3: Once phase 2 is done you already know: "every remaining interval starts after newExpandedInterval created in phase 2 so the rest can be added directly." 
 5
-6Remember different from 56. Merge Intervals overlap check in phase 2 we are not checking if we have an overlap. Everything after phase 1 is a potential overlap so we need to figure out when the overlap stops. That is the conditional in loop which is currentIntervalStart>newIntervalEnd.*/
+6Remember different from 56. Merge Intervals overlap check in phase 2 we are not checking if we have an overlap. Everything after phase 1 is a potential overlap so we need to figure out when the overlap stops. That is the conditional in loop which is currentIntervalStart>newIntervalEnd.
+Brute force solution was O(nlogn) but this is O(n) because no sorting required.*/
 7class Solution {
 8    public int[][] insert(int[][] intervals, int[] newInterval) {
 9        List<int[]> mergedInterval = new ArrayList<>();
