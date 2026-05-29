@@ -17,7 +17,7 @@ Brute force solution was O(nlogn) but this is O(n) because no sorting required.*
 15           i++; 
 16        }
 17        //PHASE 2: Now the remaining intervals atleast end after new interval starts so overlap
-18        //So we just need to know when to stop merging, which we stop after currentIntervalStart>newExpandingIntervalEnd
+18        //So we just need to know when to stop merging, which we stop after currentIntervalStart>newExpandingIntervalEnd, so the while conditional is opposite of the stop condition which is currentIntervalStart<=newExpandingIntervalEnd
 19        while(i<sizeOfIntervals && intervals[i][0]<=newInterval[1]){
 20            //here in case 1 interval[i][0] is currentIntervalStart with is 6 of [6,9] and not [1,3]
 21            //while this holds true we merge by modifying and expanding newInterval
